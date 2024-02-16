@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+      <Filter>dear imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>obvl</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering.cpp">
+      <Filter>obvl</Filter>
+    </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>obvl</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>obvl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>dear imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>dear imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>dear imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx11.h">
+      <Filter>dear imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>dear imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering.h">
+      <Filter>obvl</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>obvl</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>obvl</Filter>
+    </ClInclude>
+    <ClInclude Include="definition.h">
+      <Filter>obvl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui\misc\debuggers\imgui.natstepfilter">
+      <Filter>dear imgui</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="dear imgui">
+      <UniqueIdentifier>{b844d367-6d35-45f2-bada-ee90eb360014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl">
+      <UniqueIdentifier>{79c355b9-a3ba-466b-a9d2-4e0f06eb3d76}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="imgui\misc\debuggers\imgui.natvis">
+      <Filter>dear imgui</Filter>
+    </Natvis>
+  </ItemGroup>
+</Project>
