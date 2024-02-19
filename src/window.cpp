@@ -19,6 +19,8 @@ namespace obvl {
 
 	static ID3D11RenderTargetView* g_mainRenderTargetView;
 
+	Window* mainWindow;
+
 	fn* onQuitSubs[10] = {};
 	int quitIndex = 0;
 	void quit(fn* f) {
@@ -81,14 +83,16 @@ namespace obvl {
 
 
 
-	void Window::Update()
+	bool Window::Update()
 	{
 		while (::PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
 		{
 			::TranslateMessage(&msg);
 			::DispatchMessage(&msg);
-			if (msg.message == WM_QUIT)
+			if (msg.message == WM_QUIT) {
 				handleWindowQuit();
+				return false;
+			}
 
 			if (msg.message == WM_KEYDOWN) {
 				
@@ -98,6 +102,7 @@ namespace obvl {
 
 			}
 		}
+		return true;
 	}
 
 	void Window::setTitle(char* title)
@@ -255,6 +260,7 @@ namespace obvl {
 		// Setup Platform/Renderer backends
 		ImGui_ImplWin32_Init(m_hwnd);
 		ImGui_ImplDX11_Init(g_pd3dDevice, g_pd3dDeviceContext);
+		mainWindow = this;
 		return true;
 	}
 
@@ -278,7 +284,7 @@ namespace obvl {
 				return 0;
 			break;
 		case WM_DESTROY:
-			::PostQuitMessage(0);
+			mainWindow->handleWindowQuit();
 			return 0;
 		case WM_DPICHANGED:
 			if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_DpiEnableScaleViewports)

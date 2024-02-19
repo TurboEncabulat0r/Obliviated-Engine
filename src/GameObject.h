@@ -3,6 +3,8 @@
 #include "Component.h"
 #include <vector>
 #include <string>
+#include "rendering.h"
+
 namespace obvl
 {
 	class GameObject
@@ -11,21 +13,21 @@ namespace obvl
 	public:
 		Vector2 position;
 		Vector2 size;
+
+		Sprite sprite;
+
 		float rotation;
-		float scale;
 
 		std::string name;
 		
 		GameObject();
-		GameObject(Vector2 position, Vector2 size, float rotation, float scale);
+		GameObject(Vector2 position, Vector2 size, float rotation);
 
 		~GameObject();
 
 		void Move(Vector2 position);
 
 		void Rotate(float rotation);
-
-		void Scale(float scale);
 
 		void SetPosition(Vector2 position);
 

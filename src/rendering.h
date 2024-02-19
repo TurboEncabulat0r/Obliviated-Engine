@@ -2,13 +2,40 @@
 #include "window.h"
 #include <d3d11.h>
 #include <vector>
+#include "Vector2.h"
 
 namespace obvl
 {
 
+	struct Color {
+		float r, g, b, a;
+	};
+
+	struct Vertex {
+		float x, y, z;
+		float u, v;
+		Color color;
+	};
+
+	struct Vertex2D {
+		float x, y;
+		float u, v;
+		Color color;
+	};
+
+	struct Shader {
+		ID3D11VertexShader* vertexShader;
+		ID3D11PixelShader* pixelShader;
+	};
+
 
 	class Renderable {
 		public:
+			Renderable();
+			~Renderable();
+
+			Renderable::Renderable(const Renderable& other);
+
 			virtual void render() = 0;
 	};
 
@@ -22,41 +49,51 @@ namespace obvl
 			virtual void render() = 0;
 	};
 
-	struct Vertex {
-		float x, y, z;
-	};
-
-	struct Color {
-		float r, g, b, a;
-	};
-
 	struct Texture {
+		float width = 0;
+		float height = 0;
+		ID3D11Texture2D* texture2D;
 		ID3D11ShaderResourceView* texture;
+
+		Texture(const Texture& other);
+
+		Texture(float width, float height, ID3D11Texture2D* texture2D, ID3D11ShaderResourceView* texture);
+
+		Texture();
 	};
 
-	struct Vertex2D {
-		float x, y;
-	};
+	class Sprite : public Renderable2D {
+		public:
+			Color color;
 
-	struct Shader {
-		ID3D11VertexShader* vertexShader;
-		ID3D11PixelShader* pixelShader;
-	};
+			Texture texture;
 
-	// renderer base class for all renderers
+			Vector2 position;
+
+			Sprite(Texture texture);
+			Sprite();
+			~Sprite();
+
+			Sprite(const Sprite& other);
+
+			void render();
+	};	
+
+
+
+
+
 	class Renderer {
 		Window* window;
-		ID3D11Device* device;
-		ID3D11DeviceContext* deviceContext;
-		IDXGISwapChain* swapChain;
-		ID3D11RenderTargetView* renderTargetView;
-		ID3D11Buffer* vertexBuffer;
+
 
 		// list of all staged renderables
 		std::vector<Renderable*> renderables;
 
 		public:
 			Renderer(Window* window);
+
+			Renderer();
 
 			~Renderer();
 
@@ -72,7 +109,7 @@ namespace obvl
 
 			void setRenderTarget();
 
-			void setVertexBuffer(Vertex* vertices, int size);
+			static void setVertexBuffer(Vertex* vertices, int size);
 
 
 

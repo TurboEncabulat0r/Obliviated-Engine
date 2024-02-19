@@ -19,10 +19,12 @@ namespace obvl
 		int m_height;
 		bool m_isRunning;
 
-		void handleWindowQuit();
+
 
 
 	public:
+
+		void handleWindowQuit();
 
 		Window(char* title, int width, int height);
 
@@ -46,7 +48,7 @@ namespace obvl
 
 		void setClass(WNDCLASSEXW* wc);
 
-		void Update();
+		bool Update();
 
 		void close();
 

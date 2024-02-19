@@ -1,6 +1,6 @@
 #include "engine.h"
 #include <iostream>
-
+#include "rendering.h"
 namespace obvl
 {
 
@@ -14,6 +14,7 @@ namespace obvl
 	Engine::Engine(char* windowName) {
 		Window window = Window(windowName, 1200, 1200);
 		this->window = window;
+		this->renderer = Renderer(&window);
 		running = true;
 		window.setOnQuit(&handleQuit);
 	}
@@ -41,7 +42,13 @@ namespace obvl
 	void Engine::runSyncronous() 
 	{
 		while (running) {
-			this->window.Update();
+			bool res = this->window.Update();
+
+			if (!running) {
+				break;
+			}
+
+			this->renderer.render();
 		}
 
 	}

@@ -1,12 +1,12 @@
 #pragma once
 #include "definition.h"
 #include "Vector2.h"
-#include "GameObject.h"
 #include <string>
 
 
 namespace obvl
 {
+	class GameObject;
 	class Component
 	{
 

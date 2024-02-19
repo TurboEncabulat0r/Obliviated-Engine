@@ -1,32 +1,32 @@
 #pragma once
 #include "Vector2.h"
+#include "Component.h"
 
 
 namespace obvl
 {
 
-	class Camera2D
+	class Camera2D : public Component
 	{
-	public:
-		Vector2 position;
-		Vector2 size;
-		float rotation;
-		float zoom;
-
-		Camera2D();
-		Camera2D(Vector2 position, Vector2 size, float rotation, float zoom);
-
+		public:
+		Camera2D(GameObject* owner);
 		~Camera2D();
 
-		void Move(Vector2 position);
+		Vector2 position;
+		Vector2 size;
 
-		void Rotate(float rotation);
+		void Update();
+		void Start();
+		void OnDraw();
+		void OnGUI();
+		void OnEnable();
+		void OnDisable();
+		void OnDestroy();
 
-		void Zoom(float zoom);
+		static void setMainCamera(Camera2D camera);
 
-		void SetPosition(Vector2 position);
-
-
-
+		static Camera2D getMainCamera();
 	};
+
+	extern Camera2D mainCamera;
 }
