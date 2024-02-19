@@ -25,14 +25,26 @@
     <ClCompile Include="main.cpp">
       <Filter>obvl</Filter>
     </ClCompile>
-    <ClCompile Include="rendering.cpp">
-      <Filter>obvl</Filter>
-    </ClCompile>
     <ClCompile Include="engine.cpp">
       <Filter>obvl</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>obvl\components</Filter>
+    </ClCompile>
     <ClCompile Include="input.cpp">
-      <Filter>obvl</Filter>
+      <Filter>obvl\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>obvl\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>obvl\types</Filter>
+    </ClCompile>
+    <ClCompile Include="rendering.cpp">
+      <Filter>obvl\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="helpers.cpp">
+      <Filter>obvl\misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,17 +63,29 @@
     <ClInclude Include="imgui\imgui_impl_win32.h">
       <Filter>dear imgui</Filter>
     </ClInclude>
-    <ClInclude Include="rendering.h">
-      <Filter>obvl</Filter>
-    </ClInclude>
     <ClInclude Include="engine.h">
       <Filter>obvl</Filter>
     </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>obvl</Filter>
-    </ClInclude>
     <ClInclude Include="definition.h">
-      <Filter>obvl</Filter>
+      <Filter>obvl\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>obvl\systems\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering.h">
+      <Filter>obvl\systems\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>obvl\systems\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>obvl\types\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>obvl\components\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="helpers.h">
+      <Filter>obvl\misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +99,27 @@
     </Filter>
     <Filter Include="obvl">
       <UniqueIdentifier>{79c355b9-a3ba-466b-a9d2-4e0f06eb3d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\components">
+      <UniqueIdentifier>{5ef39d90-a6ee-454d-9abc-e3441b24259b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\misc">
+      <UniqueIdentifier>{a2a6f447-b08c-4857-b51b-7ae49f8c0490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\systems">
+      <UniqueIdentifier>{dd5027eb-8fc6-410c-8903-786fc5f02f53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\types">
+      <UniqueIdentifier>{6642a755-d11c-4394-80a3-9b7679466fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\systems\headers">
+      <UniqueIdentifier>{e6310371-cae4-4f03-96d1-c1090ff0c664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\types\headers">
+      <UniqueIdentifier>{b3085a8b-f2b9-4c62-be67-1891f8dee907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obvl\components\headers">
+      <UniqueIdentifier>{b9479c8d-880f-4d15-a1bb-31d1c3eab9c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

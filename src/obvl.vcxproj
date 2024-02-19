@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="engine.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
@@ -158,9 +160,13 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="definition.h" />
     <ClInclude Include="rendering.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -171,6 +177,8 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rendering.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui\misc\debuggers\imgui.natstepfilter" />

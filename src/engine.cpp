@@ -1,25 +1,52 @@
 #include "engine.h"
-
+#include <iostream>
 
 namespace obvl
 {
 
 
+	bool running;
 
-	class Engine {
-	public:
-		Engine(char* windowName);
+	void handleQuit() {
+		running = false;
+	}
 
-		static Engine* instance;
+	Engine::Engine(char* windowName) {
+		Window window = Window(windowName, 1200, 1200);
+		this->window = window;
+		running = true;
+		window.setOnQuit(&handleQuit);
+	}
 
-		float getFramerate();
+	Engine::Engine() {
+		Engine("Obliviated Engine");
+	}
 
-		float getFrameTime();
+	float getFramerate() 
+	{
+		return 0;
+	}
 
-		void setFramerateLimit(float fps);
+	float getFrameTime() 
+	{
+		return 0;
+	}
 
-		
-		
-	};
+	void Engine::setFramerateLimit(float fps) 
+	{
+
+
+	}
+
+	void Engine::runSyncronous() 
+	{
+		while (running) {
+			this->window.Update();
+		}
+
+	}
+
+
+
 
 }
