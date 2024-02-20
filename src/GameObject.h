@@ -63,4 +63,7 @@ namespace obvl
 
 
 	};
+
+
+	void DrawGameObjectsGUI();
 }

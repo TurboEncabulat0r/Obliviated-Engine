@@ -40,6 +40,11 @@ namespace obvl {
 		deviceContext = renderInformation.deviceContext;
 		swapChain = renderInformation.swapChain;
 		renderTargetView = renderInformation.renderTargetView;
+		HWND hwnd = *window->getHandle();
+		// Show the window
+		::ShowWindow(hwnd, SW_SHOWDEFAULT);
+		::UpdateWindow(hwnd);
+
 	}
 
 	Renderer::~Renderer()
@@ -48,6 +53,9 @@ namespace obvl {
 
 	void Renderer::render()
 	{
+		// start the frame
+		deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
+
 		// clear the back buffer to a deep blue
 		float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
 		deviceContext->ClearRenderTargetView(renderTargetView, color);

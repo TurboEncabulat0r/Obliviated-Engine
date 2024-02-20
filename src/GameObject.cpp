@@ -2,8 +2,11 @@
 
 namespace obvl
 {
+	std::vector<GameObject*> gameObjects;
+
 	GameObject::GameObject()
 	{
+		GameObject(Vector2(0, 0), Vector2(0, 0), 0);
 	}
 
 	GameObject::GameObject(Vector2 position, Vector2 size, float rotation)
@@ -11,6 +14,7 @@ namespace obvl
 		this->position = position;
 		this->size = size;
 		this->rotation = rotation;
+		gameObjects.push_back(this);
 	}
 
 	GameObject::~GameObject()
@@ -141,5 +145,12 @@ namespace obvl
 	{
 		components[index]->OnDestroy();
 		components.erase(components.begin() + index);
+	}
+
+	void DrawGameObjectsGUI() {
+		for (int i = 0; i < gameObjects.size(); i++)
+		{
+			gameObjects[i]->OnGUI();
+		}
 	}
 }

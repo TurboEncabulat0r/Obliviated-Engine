@@ -1,6 +1,10 @@
 #include "engine.h"
 #include <iostream>
 #include "rendering.h"
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_dx11.h"
+#include "imgui/imgui_impl_win32.h"
+
 namespace obvl
 {
 
@@ -39,10 +43,40 @@ namespace obvl
 
 	}
 
+
+	void drawMainMenu()
+	{
+		ImGui::Begin("Obliviated <0.3>");
+		ImGui::Text("data");
+		ImGui::End();
+	}
+
+	void drawGui()
+	{
+		// start new imgui frame
+		ImGui_ImplDX11_NewFrame();
+		ImGui_ImplWin32_NewFrame();
+
+		//ImGui::NewFrame();
+
+		//drawMainMenu();
+		
+
+		//ImGui::Render();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+		
+
+		
+	}
+
 	void Engine::runSyncronous() 
 	{
 		while (running) {
 			bool res = this->window.Update();
+
+
+			drawGui();
+
 
 			if (!running) {
 				break;
