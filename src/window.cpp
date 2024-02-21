@@ -4,6 +4,7 @@
 #include <d3d11.h>
 #include "window.h"
 #include "helpers.h"
+#include "engine.h"
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace obvl {
@@ -16,7 +17,7 @@ namespace obvl {
 	static ID3D11DeviceContext* g_pd3dDeviceContext;
 
 	static IDXGISwapChain* g_pSwapChain;
-
+	static ID3D11Texture2D* pBackBuffer;
 	static ID3D11RenderTargetView* g_mainRenderTargetView;
 
 	Window* mainWindow;
@@ -81,7 +82,18 @@ namespace obvl {
 	{
 	}
 
+	void CleanupRenderTarget()
+	{
+		if (g_mainRenderTargetView) { g_mainRenderTargetView->Release(); g_mainRenderTargetView = nullptr; }
+	}
 
+	void CreateRenderTarget()
+	{
+		
+		g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
+		g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_mainRenderTargetView);
+		pBackBuffer->Release();
+	}
 
 	bool Window::Update()
 	{
@@ -102,7 +114,19 @@ namespace obvl {
 
 			}
 		}
+		
+
+		if (g_ResizeWidth != 0 && g_ResizeHeight != 0)
+		{
+			CleanupRenderTarget();
+			g_pSwapChain->ResizeBuffers(0, g_ResizeWidth, g_ResizeHeight, DXGI_FORMAT_UNKNOWN, 0);
+			g_ResizeWidth = g_ResizeHeight = 0;
+			CreateRenderTarget();
+			handleResizeWindow();
+		}
+
 		return true;
+		
 	}
 
 	void Window::setTitle(char* title)
@@ -151,18 +175,16 @@ namespace obvl {
 		return renderInformation;
 	}
 
-	void CleanupRenderTarget()
+
+	void getDeviceAndContext(RenderInformation* renderInformation)
 	{
-		if (g_mainRenderTargetView) { g_mainRenderTargetView->Release(); g_mainRenderTargetView = nullptr; }
+		renderInformation->device = g_pd3dDevice;
+		renderInformation->deviceContext = g_pd3dDeviceContext;
+		renderInformation->swapChain = g_pSwapChain;
+		renderInformation->renderTargetView = g_mainRenderTargetView;
 	}
 
-	void CreateRenderTarget()
-	{
-		ID3D11Texture2D* pBackBuffer;
-		g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
-		g_pd3dDevice->CreateRenderTargetView(pBackBuffer, nullptr, &g_mainRenderTargetView);
-		pBackBuffer->Release();
-	}
+
 
 	bool CreateDeviceD3D(HWND hwnd) 
 	{

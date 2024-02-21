@@ -6,6 +6,10 @@
 #include <d3d11.h>
 #include <tchar.h>
 
+// links to the d3d11.lib file
+#pragma comment(lib, "d3d11.lib")
+
+
 
 namespace obvl {
 
@@ -40,31 +44,60 @@ namespace obvl {
 		deviceContext = renderInformation.deviceContext;
 		swapChain = renderInformation.swapChain;
 		renderTargetView = renderInformation.renderTargetView;
-		HWND hwnd = *window->getHandle();
-		// Show the window
-		::ShowWindow(hwnd, SW_SHOWDEFAULT);
-		::UpdateWindow(hwnd);
 
+		HWND hwnd = *window->getHandle();
 	}
 
 	Renderer::~Renderer()
 	{
 	}
 
+	void handleInvalidDevice(Window* w)
+	{
+		RenderInformation r;
+		getDeviceAndContext(&r);
+		device = r.device;
+		deviceContext = r.deviceContext;
+		swapChain = r.swapChain;
+		renderTargetView = r.renderTargetView;
+		if (deviceContext == NULL || renderTargetView == NULL) {
+			exit(1);
+		}
+	}
+
+	void rendererResizeWindow() {
+		deviceContext = NULL;
+	}
+
 	void Renderer::render()
 	{
 		// start the frame
-		deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
+
+		
 
 		// clear the back buffer to a deep blue
-		float color[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
-		deviceContext->ClearRenderTargetView(renderTargetView, color);
+		
+		if (deviceContext == NULL || renderTargetView == NULL) {
+			handleInvalidDevice(window);
+		}
+
+		deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
+		float c[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
+
+		deviceContext->ClearRenderTargetView(renderTargetView, c);
 
 		// render all renderables
 		for (int i = 0; i < renderables.size(); i++) {
 			renderables[i]->render();
 		}
 
+		ImGui::Render();
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
+		
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+
+		
 		// swap the back buffer and the front buffer
 		swapChain->Present(0, 0);
 	}

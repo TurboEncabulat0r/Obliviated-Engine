@@ -15,12 +15,15 @@ namespace obvl
 		running = false;
 	}
 
+	Engine* main = nullptr;
+
 	Engine::Engine(char* windowName) {
 		Window window = Window(windowName, 1200, 1200);
 		this->window = window;
 		this->renderer = Renderer(&window);
 		running = true;
 		window.setOnQuit(&handleQuit);
+		main = this;
 	}
 
 	Engine::Engine() {
@@ -57,14 +60,12 @@ namespace obvl
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 
-		//ImGui::NewFrame();
+		ImGui::NewFrame();
 
-		//drawMainMenu();
+		drawMainMenu();
 		
 
-		//ImGui::Render();
-		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-		
+
 
 		
 	}
@@ -72,19 +73,25 @@ namespace obvl
 	void Engine::runSyncronous() 
 	{
 		while (running) {
+
 			bool res = this->window.Update();
-
-
-			drawGui();
-
 
 			if (!running) {
 				break;
 			}
+			drawGui();
+
+
+
 
 			this->renderer.render();
 		}
 
+	}
+
+	void handleResizeWindow()
+	{
+		rendererResizeWindow();
 	}
 
 

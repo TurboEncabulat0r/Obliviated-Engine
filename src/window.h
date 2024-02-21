@@ -59,6 +59,8 @@ namespace obvl
 
 	};
 
+	void getDeviceAndContext(RenderInformation* renderInformation);
+
 
 	struct RenderInformation {
 		ID3D11Device* device;

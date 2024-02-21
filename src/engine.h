@@ -27,4 +27,6 @@ namespace obvl
 
 	};
 
+	void handleResizeWindow();
+
 }

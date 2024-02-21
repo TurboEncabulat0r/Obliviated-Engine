@@ -28,6 +28,7 @@ namespace obvl
 		ID3D11PixelShader* pixelShader;
 	};
 
+	void rendererResizeWindow();
 
 	class Renderable {
 		public:
