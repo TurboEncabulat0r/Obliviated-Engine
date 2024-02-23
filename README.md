@@ -1,9 +1,20 @@
 # Obliviated Engine
 Simple "game engine" written in C++ & DirectX 11
 
+> Contributions are welcome and accepted!
+
 This is mainly a project for fun, and i have no expectations of this being used in an actual game outside of messing with it.
-contributions are welcome and accepted. If a feature is something that isent harmfull i will probably accept the pull request.
+contributions are welcome and accepted. If a feature is something that isn't harmful i will happily accept the pull request.
 see [contribution guidelines](docs/contributing.md) for information on contributing
+
+
+## Building
+As far as im aware the project should build from opening the project file in Visual Studio.
+
+### Dependencies
+- **DirectX 11**
+- **Visual studio**
+
 
 
 ## todo
@@ -23,3 +34,4 @@ see [contribution guidelines](docs/contributing.md) for information on contribut
 - [ ] C# scripting integration
 - [ ] Python scripting integration
 - [ ] linux build support
+
