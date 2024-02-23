@@ -14,6 +14,7 @@ As far as im aware the project should build from opening the project file in Vis
 ### Dependencies
 - **DirectX 11**
 - **Visual studio**
+- **Windows 10/11**
 
 
 
