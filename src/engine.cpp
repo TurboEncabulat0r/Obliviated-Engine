@@ -4,6 +4,7 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx11.h"
 #include "imgui/imgui_impl_win32.h"
+#include "editor.h"
 
 namespace obvl
 {
@@ -21,12 +22,16 @@ namespace obvl
 		Window window = Window(windowName, 1200, 1200);
 		this->window = window;
 		this->renderer = Renderer(&window);
+
+		this->editor = new Editor();
+
 		running = true;
 		window.setOnQuit(&handleQuit);
 		main = this;
 	}
 
 	Engine::Engine() {
+
 		Engine("Obliviated Engine");
 	}
 
@@ -62,6 +67,8 @@ namespace obvl
 
 		ImGui::NewFrame();
 
+		main->editor->DrawFull();
+
 		drawMainMenu();
 		
 
@@ -79,6 +86,7 @@ namespace obvl
 			if (!running) {
 				break;
 			}
+			
 			drawGui();
 
 

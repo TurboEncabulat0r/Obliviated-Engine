@@ -81,9 +81,9 @@ namespace obvl {
 			handleInvalidDevice(window);
 		}
 
+		// set render target
 		deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
 		float c[4] = { 0.0f, 0.2f, 0.4f, 1.0f };
-
 		deviceContext->ClearRenderTargetView(renderTargetView, c);
 
 		// render all renderables
@@ -91,14 +91,14 @@ namespace obvl {
 			renderables[i]->render();
 		}
 
+
+
 		ImGui::Render();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+		
 		ImGui::UpdatePlatformWindows();
 		ImGui::RenderPlatformWindowsDefault();
-		
-		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-
-		
-		// swap the back buffer and the front buffer
+	
 		swapChain->Present(0, 0);
 	}
 

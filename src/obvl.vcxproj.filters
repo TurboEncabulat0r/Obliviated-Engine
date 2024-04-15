@@ -58,6 +58,9 @@
     <ClCompile Include="scene.cpp">
       <Filter>obvl\components</Filter>
     </ClCompile>
+    <ClCompile Include="serializeable.cpp">
+      <Filter>obvl\misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imgui_internal.h">
@@ -110,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="scene.h">
       <Filter>obvl\components\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="serializeable.h">
+      <Filter>obvl\misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -164,6 +164,7 @@
     <ClInclude Include="definition.h" />
     <ClInclude Include="rendering.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="serializeable.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
@@ -185,6 +186,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rendering.cpp" />
     <ClCompile Include="scene.cpp" />
+    <ClCompile Include="serializeable.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
