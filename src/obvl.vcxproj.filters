@@ -52,6 +52,12 @@
     <ClCompile Include="Component.cpp">
       <Filter>obvl\components</Filter>
     </ClCompile>
+    <ClCompile Include="editor.cpp">
+      <Filter>obvl\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>obvl\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imgui_internal.h">
@@ -97,6 +103,12 @@
       <Filter>obvl\components\headers</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
+      <Filter>obvl\components\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="editor.h">
+      <Filter>obvl\systems\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
       <Filter>obvl\components\headers</Filter>
     </ClInclude>
   </ItemGroup>

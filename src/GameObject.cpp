@@ -153,4 +153,16 @@ namespace obvl
 			gameObjects[i]->OnGUI();
 		}
 	}
+
+	void DrawGameObjectsGUI() {
+		for (int i = 0; i < gameObjects.size(); i++)
+		{
+			gameObjects[i]->OnGUI();
+		}
+	}
+
+	void G_GetAllGameobjects(void* list)
+	{
+		list = &gameObjects;
+	}
 }

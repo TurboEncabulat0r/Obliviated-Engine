@@ -64,6 +64,7 @@ namespace obvl
 
 	};
 
+	void G_GetAllGameobjects(void*);
 
 	void DrawGameObjectsGUI();
 }

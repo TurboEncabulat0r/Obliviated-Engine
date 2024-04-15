@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="editor.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="helpers.h" />
@@ -162,12 +163,14 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="definition.h" />
     <ClInclude Include="rendering.h" />
+    <ClInclude Include="scene.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="editor.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="helpers.cpp" />
@@ -181,6 +184,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rendering.cpp" />
+    <ClCompile Include="scene.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
